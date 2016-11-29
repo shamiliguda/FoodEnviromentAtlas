@@ -78,6 +78,16 @@ router.get('/states', function(req, res){
 		}
 	})
 });
+router.get('/stateswithshortcodes', function(req, res){
+	executeQuery('SELECT state_name as name,state_code as short FROM states', function (err, rows) {
+		if (err) {
+			console.log(err);
+			res.send([]);
+			return;
+		}
+		res.send(rows);
+	})
+});
 router.get('/counties', function(req, res){
 	var state = req.query.state;
 	console.log('Provided state is : ', state);
@@ -267,7 +277,13 @@ router.get('/getcomparisonfordiffhealthassistances', function (req, res) {
 	console.log('Provided county is : ', county);
 	var state = req.query.state;
 	console.log('Provided county is : ', state);
-	executeQuery('select `COUNTY_name`, b.pct_snap - a.pct_snap as PCH_SNAP_09_14 , b.PCT_NSLP - a.PCT_NSLP as PCH_NSLP_09_14 , b.PCT_SBP - a.PCT_SBP as PCH_SBP_09_14 , b.PCT_WIC - a.PCT_WIC as PCH_WIC_09_14 , b.PCT_CACFP - a.PCT_CACFP as PCH_CACFP_09_14 from assistance a join assistance b using (county_id) join countys c using (county_id) inner join states d on c.state_id = d.state_id where a.year = 2009 and b.year = 2014 and county_name = (?) and state_name in (? )\
+	executeQuery('select `COUNTY_name`, \
+	    ROUND((b.pct_snap * b.REDEMP_SNAPS - a.pct_snap * a.REDEMP_SNAPS)/ b.REDEMP_SNAPS,2) AS PCH_SNAP_09_14, \
+    ROUND((b.PCT_NSLP* b.REDEMP_SNAPS - a.PCT_NSLP* a.REDEMP_SNAPS)/ a.REDEMP_SNAPS,2) AS PCH_NSLP_09_14, \
+    ROUND((b.PCT_SBP * b.REDEMP_SNAPS- a.PCT_SBP* a.REDEMP_SNAPS)/ a.REDEMP_SNAPS,2) AS PCH_SBP_09_14, \
+    ROUND((b.PCT_WIC* b.REDEMP_SNAPS - a.PCT_WIC* a.REDEMP_SNAPS)/ a.REDEMP_SNAPS,2) AS PCH_WIC_09_14, \
+    ROUND((b.PCT_CACFP* b.REDEMP_SNAPS - a.PCT_CACFP* a.REDEMP_SNAPS)/ a.REDEMP_SNAPS,2) AS PCH_CACFP_09_14 \
+	from assistance a join assistance b using (county_id) join countys c using (county_id) inner join states d on c.state_id = d.state_id where a.year = 2009 and b.year = 2014 and county_name = (?) and state_name in (? )\
 		', [county,state], function (err, rows) {
 		if (err) {
 			console.log(err);

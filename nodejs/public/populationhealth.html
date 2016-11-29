@@ -30,7 +30,7 @@
 <body>
 
 <div class="wrapper">
-	<div class="sidebar" data-color="orange" data-image="assets/img/sidebar-5.jpg">
+	<div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
 
 		<!--
 
@@ -97,7 +97,17 @@
 		<nav class="navbar navbar-default navbar-fixed">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">Dashboard</a>
+					<a class="navbar-brand" href="javascript:void(0)">Food Atlas | Population & Health Statistics by State & County</a>
+				</div>
+				<!-- Help Button  -->
+				<div class="pull-right">
+
+					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"
+					        style="margin: 9px 15px;">
+						<span class="pe-7s-help2" style="font-size: 20px;float: left;"></span>
+
+						<p style="float: left;font-size: 14px;margin:0;">HELP</p>
+					</button>
 				</div>
 			</div>
 		</nav>
@@ -136,6 +146,29 @@
 			</div>
 		</div>
 
+
+	</div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog" style="width: 75%;">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Population and Health</h4>
+			</div>
+			<div class="modal-body">
+				<p><br>Population and Health</br>
+                      <br>  Select the state from the left dropdown box above the graph and select the county from right dropdown box above the graph</br>
+For each state and County selected one is able to see population for each year starting from 2009 to 2014 on the left graph in yellow shows population (in unit individuals) for each year starting from 2009 up to 2014, whereas the graph on the right (multicolored) quantitatively shows the condition of the population w.r.t health disorders (in percentage) for only two years 2009 and 2014(starting year and ending year).
+</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
 
 	</div>
 </div>

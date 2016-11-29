@@ -10,7 +10,6 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 	<meta name="viewport" content="width=device-width"/>
 
-
 	<!-- Bootstrap core CSS     -->
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -30,7 +29,7 @@
 <body>
 
 <div class="wrapper">
-	<div class="sidebar" data-color="green" data-image="assets/img/sidebar-5.jpg">
+	<div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
 
 		<!--
 
@@ -97,7 +96,17 @@
 		<nav class="navbar navbar-default navbar-fixed">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">Food Atlas | Lowest Food Supply Counties</a>
+					<a class="navbar-brand" href="#">Food Atlas | SNAP & Poverty % in each State</a>
+				</div>
+				<!-- Help Button  -->
+				<div class="pull-right">
+
+					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal"
+					        style="margin: 9px 15px;">
+						<span class="pe-7s-help2" style="font-size: 20px;float: left;"></span>
+
+						<p style="float: left;font-size: 14px;margin:0;">HELP</p>
+					</button>
 				</div>
 			</div>
 		</nav>
@@ -124,6 +133,32 @@
 			</div>
 		</div>
 
+
+	</div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog" style="width: 75%;">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">SNAP & Poverty % in each State</h4>
+			</div>
+			<div class="modal-body">
+				<p>Select State from the drop box above the map-view. Each color-code represents the SNAP intensity for each specific county. 
+Hover the mouse on any colored dot (each dot for each county) for statistics on each county.
+<br>Following statistics are available:- </br>
+<br>•	County Name, State Name</br>
+<br>•	SNAPs Intensity (number of SNAP Stores or facilities)</br>
+<br>•	Poverty Rate (in %)</br>
+</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+			</div>
+		</div>
 
 	</div>
 </div>
